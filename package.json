@@ -1,0 +1,23 @@
+{
+  "name": "task-2",
+  "version": "1.0.0",
+  "description": "My Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shofiyatunnisa9/my-project-shofiyatunnisa.git"
+  },
+  "author": "Shofiyatunnisa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shofiyatunnisa9/my-project-shofiyatunnisa/issues"
+  },
+  "homepage": "https://github.com/shofiyatunnisa9/my-project-shofiyatunnisa#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

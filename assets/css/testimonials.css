@@ -1,0 +1,40 @@
+.testimonial_star_buttons{
+    display: flex;
+    justify-content: center;
+}
+.testimonial_star_buttons button{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding:5px 15px ;
+    border-radius: 5px;
+    border: none;
+    text-align:center;
+    font-size: 15px;
+    font-family: "Poppins", serif;
+    cursor: pointer;
+    margin: 5px;
+}
+.testimonial_list{
+    width: 90%;
+    margin : 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.testimonial_list article{
+    /* width: 30%; */
+    border: 1px solid lightgray;
+    padding: 15px;
+    box-sizing: 5px;
+
+    border-radius: 10px;
+
+}
+.testimonial_list article img{
+    width: 100%;
+}
+.testimonial_item_caption{
+    color: slategrey;
+
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Web Shofiyatunnisa</title>
+        <link rel="icon" href="assets/img/icon3.png" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/testimonials.css">
+        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logo-sho.png" width="90" height="60">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="myproject.html">My Project</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold " href="testimonials.html">Testimonials</a>
+                    </li>
+                </ul>
+
+                <a class="btn btn-black" href="contact.html">Contact Me</a>
+
+            </div>
+        </div>
+    </nav>   
+
+<!-- Main Content Testimonial -->
+<main>
+    <h1 style="text-align: center;">My Testimonials</h1>
+    <h3 style="text-align: center;">Rating By Star</h3>
+    <!-- Start Button -->
+    <div class="testimonial_star_buttons">
+        <button onclick="showAllTestimonials()">All</button>
+        <button onclick="filterTestimonialsByStar(1)">1★</button>
+        <button onclick="filterTestimonialsByStar(2)">2★</button>
+        <button onclick="filterTestimonialsByStar(3)">3★</button>
+        <button onclick="filterTestimonialsByStar(4)">4★</button>
+        <button onclick="filterTestimonialsByStar(5)">5★</button>
+
+    </div>
+
+    <!-- TESTIMONIALS LIST -->
+     <div id="testimonialsContainer" class="testimonial_list">
+        <article>
+            <img src="assets/img/pict3.jpg" alt="testimonials_img">
+            <p class="testimonial_item_caption">
+                <i>"Keren banget websitenya"</i>
+            </p>
+            <p style="text-align: right;"> - shofiyatunnisa</p>
+            <p style="text-align: right; font-weight: bold;" >5★</p>
+        </article> 
+     </div>
+ </main>
+ <script src="/js/testimonials.js"></script>
+ <script src="assets/js/bootstrap/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    
+</body>
+</html>
