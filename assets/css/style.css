@@ -114,7 +114,7 @@ nav {
 /* CONTACT FORM STYLE*/
 .contact_form {
     width: 500px !important;
-    margin: 100px auto;
+    margin: 100px auto !important;
 }
 
 .contact_form h1 {
@@ -193,7 +193,19 @@ textarea {
     width: 90%;
     margin: 30px auto;
 }
-
+.project_post_button{
+   
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding:10px 15px ;
+    border-radius: 5px;
+    border: none;
+    text-align:center;
+    font-size: 15px;
+    font-family: "Poppins", serif;
+    cursor: pointer;
+}
 .blog_item {
     padding: 15px;
     height: 250px;
@@ -277,10 +289,14 @@ textarea {
     display: grid !important;
     gap: 10px !important;
 }
+.form_field_techno img{
+    width: 50px;
+    height: 50px;
+}
 
 /* My Project */
 .myProject_list{
-    width: 90%;
+    width: 80% !important;
     margin: 30px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -323,4 +339,26 @@ textarea {
     display: flex;
     text-align: center;
     gap: 20px;
+}
+
+.social-links i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color:transparent;
+    border: 0.2rem solid black;
+    border-radius: 50%;
+    color:black;
+    margin: 5px 10px;
+    font-size: 1.5rem;
+    transition: 0.2s linear;
+}
+
+.social-links i:hover{
+    scale: 1.3;
+    color: white;
+    background-color: black;
+    filter: drop-shadow(0 0 10px black);
 }

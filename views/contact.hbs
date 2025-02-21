@@ -1,0 +1,42 @@
+{{#> layout currentPage = 'Contact'}}
+
+<!--FORM  -->
+
+<form class="row g-3 contact_form" id="form-contact" onsubmit=" return submitForm(event)" action="/contact"
+    method="POST">
+    <h1>GET IN TOUCH</h1>
+    <div class="col-12 form_field">
+        <label for="name" class="form-label fw-bold">Name</label>
+        <input type="text" class="form-control" id="iname" required>
+    </div>
+    <div class="col-12 form_field">
+        <label for="email" class="form-label fw-bold">Email</label>
+        <input type="text" class="form-control" id="email" required>
+    </div>
+    <div class="col-12 form_field">
+        <label for="phone" class="form-label fw-bold">Phone Number</label>
+        <input type="text" class="form-control" id="phone" required>
+    </div>
+
+    <div class="col-12 form_field">
+        <label for="subject" class="form-label fw-bold">Subject</label>
+        <select class="form-select" id="subject" required>
+            <option value="" disabled selected>Choose...</option>
+            <option value="For work">For work</option>
+            <option value="Just Talk">Just Talk</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div class="col-12 form_field">
+        <label for="message" class="form-label fw-bold">Your Message</label>
+        <textarea type="text" class="form-control" id="message" rows="6" required></textarea>
+    </div>
+
+    <div class="col-12 button_container">
+        <button type="submit" class="btn btn-black">Submit</button>
+    </div>
+</form>
+<script src="/js/contact_form.js"></script>
+
+{{/layout}}

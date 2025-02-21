@@ -1,0 +1,39 @@
+{{#> layout currentPage="Register"}}
+
+
+<!-- Register -->
+<form style="
+padding-top: 50px;
+    width: 400px;
+    text-align: center;
+    margin: auto;" id="register-form" action="/register" method="post" class="create_blog_form">
+    <h1 class="mb-4">Register</h1>
+    <div class="input-group mb-3">
+        <input name="name" id="name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="name" placeholder="Name" required />
+    </div>
+
+    <div class="input-group mb-3">
+        <input name="email" id="email" type="email" class="form-control" aria-label="Sizing example input"
+            aria-describedby="email" placeholder="Email" required />
+    </div>
+    <div class="input-group mb-3">
+        <input name="password" id="password" type="password" class="form-control" aria-label="Sizing example input"
+            aria-describedby="password" placeholder="Password" required />
+    </div>
+    <div class="input-group mb-3">
+        <input name="confirmPassword" id="password" type="password" class="form-control"
+            aria-label="Sizing example input" aria-describedby="password" placeholder="Confirm Password" required />
+    </div>
+    {{#if messages.error}}
+    <div class="alert alert-danger" role="alert">
+        {{messages.error}}
+    </div>
+    {{/if}}
+    <div class="text-center mt-4">
+        <button class="btn btn-black" type="submit">Register</button>
+    </div>
+
+</form>
+
+{{/layout}}

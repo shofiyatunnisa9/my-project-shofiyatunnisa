@@ -1,0 +1,24 @@
+{{#> layout currentPage = 'Testimonials'}}
+
+<!-- Main Content Testimonial -->
+<main>
+    <h1 style="text-align: center;">My Testimonials</h1>
+    <h3 style="text-align: center;">Rating By Star</h3>
+    <!-- Start Button -->
+    <div class="testimonial_star_buttons">
+        <button onclick="showAllTestimonials()">All</button>
+        <button onclick="filterTestimonialsByStar(1)">1★</button>
+        <button onclick="filterTestimonialsByStar(2)">2★</button>
+        <button onclick="filterTestimonialsByStar(3)">3★</button>
+        <button onclick="filterTestimonialsByStar(4)">4★</button>
+        <button onclick="filterTestimonialsByStar(5)">5★</button>
+
+    </div>
+
+    <!-- TESTIMONIALS LIST -->
+    <div id="testimonialsContainer" class="testimonial_list">
+        <p>Loading....</p>
+    </div>
+</main>
+<script src="/js/testimonials.js"></script>
+{{/layout}}
