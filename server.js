@@ -5,6 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("express-flash");
 const session = require("express-session");
+const cors = require("cors");
 
 const {
   renderHome,
@@ -39,6 +40,7 @@ app.set("views", path.join(__dirname, "./views"));
 app.use(express.static("assets"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 // app.use(express.static("assets")); //agar bisa mengakses assets
 app.use("/uploads", express.static(path.join(__dirname, "./uploads"))); //agar bisa mengakses assets
 app.use(methodOverride("_method"));
@@ -70,6 +72,11 @@ app.post("/login", authLogin);
 app.post("/register", authRegister);
 
 //CONTACT ME
+//app.get("/contact", renderContact);
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
 app.post("/contact", renderContact);
 
 // BLOG LIST

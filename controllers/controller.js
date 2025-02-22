@@ -11,9 +11,41 @@ async function renderHome(req, res) {
   res.render("index", { user: user });
 }
 async function renderContact(req, res) {
-  const user = req.session.user;
-  res.render("contact", { user: user });
+  const { name, email, phone, subject, message } = req.body;
+
+  if (!name || !email || !phone || !subject || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  console.log("New Contact Form Submission:", {
+    name,
+    email,
+    phone,
+    subject,
+    message,
+  });
+  res.status(200).json({ message: "Form submitted successfully" });
 }
+// async function renderContact(req, res) {
+//   const user = req.session.user;
+//   res.render("contact", { user: user });
+// }
+// async function renderContact(req, res) {
+//   const user = req.session.user;
+
+//   const { name, phone, subject, message } = req.body;
+
+//   const newProject = {
+//     name, //ini asma saja dengan menulisakan title : totle
+//     phone,
+//     subject,
+//     message,
+//   };
+//   const resultSubmit = await Project.create(newProject);
+//   console.log();
+//   res.redirect("/contact"); // URL, bukan nama file
+// }
+
 async function renderTestimonials(req, res) {
   const user = req.session.user;
   res.render("testimonials", { user: user });

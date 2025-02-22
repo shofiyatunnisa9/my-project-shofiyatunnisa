@@ -3,11 +3,11 @@
 <!--FORM  -->
 
 <form class="row g-3 contact_form" id="form-contact" onsubmit=" return submitForm(event)" action="/contact"
-    method="POST">
+    method="Post" enctype="multipart/form-data">
     <h1>GET IN TOUCH</h1>
     <div class="col-12 form_field">
         <label for="name" class="form-label fw-bold">Name</label>
-        <input type="text" class="form-control" id="iname" required>
+        <input type="text" class="form-control" id="name" required>
     </div>
     <div class="col-12 form_field">
         <label for="email" class="form-label fw-bold">Email</label>
@@ -37,6 +37,7 @@
         <button type="submit" class="btn btn-black">Submit</button>
     </div>
 </form>
+
 <script src="/js/contact_form.js"></script>
 
 {{/layout}}

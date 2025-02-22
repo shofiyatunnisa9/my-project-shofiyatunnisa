@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shofiyatunnisa9/my-project-shofiyatunnisa#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.1",
