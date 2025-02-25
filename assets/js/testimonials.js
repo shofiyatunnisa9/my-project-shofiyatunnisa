@@ -31,7 +31,7 @@ function fetchTestimonials() {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "https://api.npoint.io/3b7fd364ea48f5420749", true);
+    xhr.open("GET", "https://api.npoint.io/dc466b7035151d180926", true);
 
     xhr.onload = function () {
       if (xhr.status === 200) {

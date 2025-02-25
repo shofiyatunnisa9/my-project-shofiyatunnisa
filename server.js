@@ -25,7 +25,7 @@ const {
   updateProject,
   renderError,
 } = require("./controllers/controller");
-const { durationMonths } = require("./utils/time");
+
 const upload = require("./middleware/upload-file");
 const chechUser = require("./middleware/auth");
 
@@ -58,8 +58,6 @@ hbs.registerPartials(__dirname + "/views/partials", function (err) {});
 hbs.registerHelper("equal", function (a, b) {
   return a === b;
 });
-hbs.registerHelper("durationMonths", durationMonths);
-// hbs.registerHelper("end_date", end_date);
 
 //HALAMAN HOME
 app.get("/", renderHome);
@@ -79,25 +77,25 @@ app.get("/contact", (req, res) => {
 
 app.post("/contact", renderContact);
 
-// BLOG LIST
+// PROJECT LIST
 app.get("/myproject", renderProject);
 
-//CREATE BLOG PAGE
+//CREATE PROJECT PAGE
 app.post("/myproject-create", chechUser, upload.single("image"), createProject);
 
-//SUBMIT NEW BLOG
+//SUBMIT NEW PROJECT
 app.get("/myproject-create", chechUser, renderProjectCreate);
 
-//Edit Blog
+//Edit PROJECT
 app.get("/myproject-edit/:id", renderProjectEdit);
 
-// SUBMIT/SAVE UPDATE BLOG
+// SUBMIT/SAVE UPDATE PROJECT
 app.patch("/myproject-update/:id", updateProject);
 
-// DELETE EXISTING BLOG
+// DELETE EXISTING PROJECT
 app.delete("/myproject/:id", deleteProject);
 
-// BLOG DETAIL
+// PROJECT DETAIL
 app.get("/myproject/:id", renderProjectDetail);
 
 //TESTIMONIAL

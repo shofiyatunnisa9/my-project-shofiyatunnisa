@@ -11,125 +11,34 @@
         <a href="/myproject-create" class="project_post_button">Create New Project</a>
     </div>
     {{/if}}
+    <div id="project-list" class="card myProject_list" style="width: 18rem;">
 
-    <div id="myProject" class="myProject_list">
         {{#each projects}}
         <article>
-            <img src="{{this.image}}" alt="myProject_img">
-            <h4 class="myProject_item_caption " style="font-weight: bold;">
-                {{this.name}}
-            </h4>
-            <p style="color: gray;">durasi : {{this.durationMonths}}</p>
-            <p>{{this.description}}</p>
-            <div id="icon_myProject">
-                <img src="/img/playstore.png" alt="">
-                <img src="/img/android.png" alt="">
-                <img src="/img/java.png" alt="">
-            </div>
-            <p></p>
+            <img src="{{this.image}}" class="card-img-top" alt="img-card">
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p style="color: gray;">duration: {{this.duration}}</p>
+                <p class="card-text">{{this.description}}</p>
+                <div class="tech-icons">
+                    {{#each this.technologies}}
+                    <img src="/img/{{this}}.png" alt="{{this}}">
+                    {{/each}}
+                </div>
 
-            {{#if (equal ../user.id this.authorId)}}
-            <div class="myProject_buttons">
+            </div>
+            <div class="card-body d-grid gap-2 d-md-block "
+                style="display: flex !important ; text-align: center; !important">
                 <a href="/myproject-edit/{{this.id}}" class="btn btn-black">Edit</a>
+                <form action="/myproject/{{this.id}}?_method=DELETE" method="POST">
+                    <button onclick="return confirm ('Are you sure you want to delete?')" class="btn btn-black"
+                        type="submit">Delete</button>
 
+                </form>
             </div>
-
-            <form action="/myproject/{{this.id}}?_method=DELETE" method="post">
-                <button onclick="return confirm ('Are you sure you want to delete?')" class="btn btn-black"
-                    type="submit">Delete</button>
-
-            </form>
-
-            {{/if}}
+        </article>
+        {{/each}}
     </div>
-    {{/each}}
-    </article>
-
-
-    {{!-- <article>
-        <img src="/img/pict1.jpg" alt="myProject_img">
-        <h4 class="myProject_item_caption " style="font-weight: bold;">
-            Dumbways Mobile Apps - 2025
-        </h4>
-        <p style="color: gray;">durasi : 3 bulan</p>
-        <p>App that used for dumbways student, it way deployed and can downloaded on playstore or appstore.
-            Happy download</p>
-        <div id="icon_myProject">
-            <img src="/img/playstore.png" alt="">
-            <img src="/img/android.png" alt="">
-            <img src="/img/java.png" alt="">
-        </div>
-        <p></p>
-
-        <div class="myProject_buttons">
-            <div class="button_myProject">
-                <button type="submit">Edit</button>
-            </div>
-            <div class="button_myProject">
-                <button type="submit">Delete</button>
-            </div>
-        </div>
-
-    </article>
-
-    <article>
-        <img src="/img/pict3.jpg" alt="myProject_img">
-        <h4 class="myProject_item_caption " style="font-weight: bold;">
-            Dumbways Mobile Apps - 2025
-        </h4>
-        <p style="color: gray;">durasi : 3 bulan</p>
-        <p>App that used for dumbways student, it way deployed and can downloaded on playstore or appstore.
-            Happy download</p>
-        <div id="icon_myProject">
-            <img src="/img/playstore.png" alt="">
-            <img src="/img/android.png" alt="">
-            <img src="/img/java.png" alt="">
-        </div>
-        <p></p>
-
-        <div class="myProject_buttons">
-            <div class="button_myProject">
-                <button type="submit">Edit</button>
-            </div>
-            <div class="button_myProject">
-                <button type="submit">Delete</button>
-            </div>
-        </div>
-
-    </article>
-
-
-
-
-    <article>
-        <img src="/img/pict1.jpg" alt="myProject_img">
-        <h4 class="myProject_item_caption " style="font-weight: bold;">
-            Dumbways Mobile Apps - 2025
-        </h4>
-        <p style="color: gray;">durasi : 3 bulan</p>
-        <p>App that used for dumbways student, it way deployed and can downloaded on playstore or
-            appstore. Happy download</p>
-        <div id="icon_myProject">
-            <img src="/img/playstore.png" alt="">
-            <img src="/img/android.png" alt="">
-            <img src="/img/java.png" alt="">
-        </div>
-        <p></p>
-
-        <div class="myProject_buttons">
-            <div class="button_myProject">
-                <button type="submit">Edit</button>
-            </div>
-            <div class="button_myProject">
-                <button type="submit">Delete</button>
-            </div>
-        </div>
-
-    </article>
-
-
-    </div> --}}
-
-
 </main>
+
 {{/layout}}

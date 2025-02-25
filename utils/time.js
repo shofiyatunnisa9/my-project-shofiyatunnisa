@@ -1,19 +1,23 @@
-function hitungDurasi() {
-  // let start_date = new Date(document.getElementById("start_date").value);
-  // let end_date = new Date(document.getElementById("end_date").value);
+const calculateDuration = (start, end) => {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
 
-  if (isNaN(start_date) || isNaN(end_date)) {
-    alert("Silakan masukkan tanggal yang valid.");
-    return;
+  let months =
+    (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+    (endDate.getMonth() - startDate.getMonth());
+  let days = endDate.getDate() - startDate.getDate();
+
+  if (days < 0) {
+    months -= 1;
+    const lastMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+    days += lastMonth.getDate();
   }
 
-  if (end_date < start_date) {
-    alert("End Date harus lebih besar dari Start Date.");
-    return;
-  }
-}
+  if (months > 0 && days > 0) return `${months} months, ${days} days`;
+  if (months > 0) return `${months} months`;
+  return `${days} days`;
+};
 
-// let durationMonths =
-//   (end_date.getFullYear() - start_date.getFullYear()) * 12 +
-//   (end_date.getMonth() - start_date.getMonth());
-// if (durationMonths < 0) durationMonths = 0;
+module.exports = {
+  calculateDuration,
+};

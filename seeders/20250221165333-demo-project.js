@@ -14,8 +14,8 @@ module.exports = {
      */
     return queryInterface.bulkInsert("Projects", [
       {
-        authorId: 1,
-        image: "/img/pict1.png",
+        authorId: 10,
+        image: "/img/pict1.jpg",
         name: "Nice blog!!",
         startDate: "2025-01-20",
         endDate: "2025-03-20",
@@ -27,8 +27,8 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        authorId: 1,
-        image: "/img/pict2.png",
+        authorId: 5,
+        image: "/img/pict2.jpg",
         name: "Nice blog!!",
         startDate: "2025-01-20",
         endDate: "2025-03-20",

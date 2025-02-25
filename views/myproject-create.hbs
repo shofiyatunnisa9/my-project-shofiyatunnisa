@@ -1,46 +1,46 @@
-{{#> layout currentPage = 'Create Blog'}}
-<form class="row g-3 create_project_form" id="project-form" action="myproject-create" method="post"
+{{#> layout currentPage = 'Create Project'}}
+<form class="row g-3 create_project_form" id="project-form" action="/myproject-create" method="POST"
     enctype="multipart/form-data">
-    <h1>Add New Project</h1>
+    <h2 style="text-align: center;">Add New Project</h2>
     <div class="col-12 form_field">
         <label for="name" class="form-label fw-bold">Project Name</label>
-        <input type="text" class="form-control" id="inputNameProject" required>
+        <input name="name" type="text" class="form-control" id="inputNameProject" required>
     </div>
     <div class="col-md-6 form_field ">
-        <label for="start_date" class="form-label fw-bold">Start date</label>
-        <input type="date" class="form-control" id="start_date" required>
+        <label for="startDate" class="form-label fw-bold">Start date</label>
+        <input name="startDate" type="date" class="form-control" id="startDate" required>
     </div>
     <div class="col-md-6 form_field">
-        <label for="end_date" class="form-label fw-bold">End Date</label>
-        <input type="date" class="form-control" id="end_date" required>
+        <label for="endDate" class="form-label fw-bold">End Date</label>
+        <input name="endDate" type="date" class="form-control" id="endDate" required>
     </div>
 
     <div class="col-12 form_field">
         <label for="description" class="form-label fw-bold">Description</label>
-        <textarea type="text" class="form-control" id="description" rows="6" required></textarea>
+        <textarea name="description" type="text" class="form-control" id="description" rows="6" required></textarea>
     </div>
     <label>Technologies</label>
-    <div class="tech-options">
+    <div id="technologies" class="tech-options">
         <label>
-            <input type="checkbox" id="nodejs">
+            <input name="technologies" type="checkbox" id="nodejs">
             <img src="/img/nodejs.png" alt="Node Js">
         </label>
         <label>
-            <input type="checkbox" id="reactjs">
+            <input name="technologies" type="checkbox" id="reactjs">
             <img src="/img/react.png" alt="React Js">
         </label>
         <label>
-            <input type="checkbox" id="nextjs">
+            <input name="technologies" type="checkbox" id="nextjs">
             <img src="/img/next.js.png" alt="Next Js">
         </label>
         <label>
-            <input type="checkbox" id="typescript">
+            <input name="technologies" type="checkbox" id="typescript">
             <img src="/img/typescript.png" alt="TypeScript">
         </label>
 
         <div class="col-12 form_field">
             <label for="image" class="form-label fw-bold">Upload Image</label>
-            <input type="file" class="form-control" id="uploadImage" required>
+            <input name="image" type="file" class="form-control" id="uploadImage" required>
         </div>
         <div class="col-12 button_container" id="project-button">
             <button onclick="hitungDurasi()" type="submit" class="btn btn-black">Submit</button>
