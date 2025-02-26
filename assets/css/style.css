@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 20px auto !important;
 }
 
 nav {
@@ -189,9 +189,10 @@ textarea {
 }
 
 /* blog list style */
-.blog_list {
-    width: 90%;
+#project-list {
+    width: 90% !important;
     margin: 30px auto;
+    padding-top: 0% !important;
 }
 .project_post_button{
    
@@ -360,4 +361,36 @@ textarea {
     color: white;
     background-color: black;
     filter: drop-shadow(0 0 10px black);
+}
+
+.register-form{
+    padding-top: 50px;
+    width: 400px;
+    text-align: center;
+    margin: auto;
+}
+/* .tech-options input, label{
+    display: flex;
+} */
+
+.card-body-buttons a, button{
+    
+    justify-content: center; /* Posisikan ke tengah horizontal */
+    align-items: center; /* Posisikan ke tengah vertikal (jika parent punya tinggi) */
+    gap: 10px;
+    height: auto ;
+    width: auto;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 10px;
+    border: none;
+    
+    font-size: 15px;
+    font-family: "Poppins", serif;
+    cursor: pointer;
+    margin: 5px;
+    
+   
 }

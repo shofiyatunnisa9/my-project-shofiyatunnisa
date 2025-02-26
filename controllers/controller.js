@@ -1,10 +1,8 @@
 const { Sequelize, QueryTypes, where } = require("sequelize");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-// const path = require("path");
 const config = require("../config/config.json");
 const { Project, User } = require("../models");
-// const filePath = path.join(__dirname, "projects.json");
 const sequelize = new Sequelize(config.development);
 const timeUtils = require("../utils/time");
 
@@ -139,10 +137,13 @@ async function renderProject(req, res) {
   }
 }
 async function renderProjectDetail(req, res) {
+  const user = req.session.user;
   const id = req.params.id;
 
   const projectYangDipilih = await Project.findOne({
-    where: { id: id },
+    where: {
+      id: id,
+    },
   });
 
   if (projectYangDipilih === null) {
@@ -182,9 +183,15 @@ async function createProject(req, res) {
         .status(400)
         .json({ message: "End date must be after start date!" });
     }
-    const techArray = Array.isArray(technologies)
-      ? technologies
-      : [technologies];
+    // let techArray = [];
+    // if (Array.isArray(technologies)) {
+    //   techArray = technologies.filter((t) => t !== "on"); // Hapus nilai "on"
+    // } else if (typeof technologies === "string") {
+    //   techArray = [technologies]; // Jika hanya satu checkbox, ubah ke array
+    // }
+    // const selectedTechnologies = Array.isArray(technologies)
+    //   ? technologies
+    //   : [technologies];
     // Fungsi menghitung durasi dalam bulan & hari
     const calculateDuration = (start, end) => {
       const startDate = new Date(start);
@@ -216,13 +223,18 @@ async function createProject(req, res) {
     const image = req.file
       ? `/uploads/${req.file.filename}`
       : "/uploads/default.png";
+    // const checkedTechnologies = ["nodejs", "reactjs", "nextjs", "typescript"]; // array
 
-    // Simpan proyek ke database
+    // const technologies = checkedTechnologies.join(",");
+
+    let techArray = Array.isArray(technologies)
+      ? technologies.filter((t) => t.trim() !== "")
+      : [];
     await Project.create({
       name,
       startDate,
       endDate,
-      duration, // Menyimpan format "X months, Y days"
+      duration,
       description,
       technologies: techArray,
       image,
@@ -456,7 +468,7 @@ async function updateProject(req, res) {
   res.redirect("/myproject");
 }
 async function deleteProject(req, res) {
-  const id = req.params.id;
+  const { id } = req.params;
   const deleteResult = await Project.destroy({
     where: {
       id: id,
@@ -477,7 +489,6 @@ module.exports = {
   renderRegister,
   renderContact,
   renderTestimonials,
-
   authLogin,
   authRegister,
   authLogout,

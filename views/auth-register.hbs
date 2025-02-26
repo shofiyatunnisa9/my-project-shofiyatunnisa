@@ -2,28 +2,25 @@
 
 
 <!-- Register -->
-<form style="
-padding-top: 50px;
-    width: 400px;
-    text-align: center;
-    margin: auto;" id="register-form" action="/register" method="post" class="create_blog_form">
-    <h1 class="mb-4">Register</h1>
+<form id="register-form" action="/register" method="post" class="register-form">
+    <h2 class="mb-4">Registration</h2>
     <div class="input-group mb-3">
         <input name="name" id="name" type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="name" placeholder="Name" required />
+            aria-describedby="name" placeholder="Name" style="border-radius: 40px;" required />
     </div>
 
     <div class="input-group mb-3">
         <input name="email" id="email" type="email" class="form-control" aria-label="Sizing example input"
-            aria-describedby="email" placeholder="Email" required />
+            aria-describedby="email" placeholder="Email" style="border-radius: 40px;" required />
     </div>
     <div class="input-group mb-3">
         <input name="password" id="password" type="password" class="form-control" aria-label="Sizing example input"
-            aria-describedby="password" placeholder="Password" required />
+            aria-describedby="password" placeholder="Password" style="border-radius: 40px;" required />
     </div>
     <div class="input-group mb-3">
         <input name="confirmPassword" id="password" type="password" class="form-control"
-            aria-label="Sizing example input" aria-describedby="password" placeholder="Confirm Password" required />
+            aria-label="Sizing example input" aria-describedby="password" placeholder="Confirm Password"
+            style="border-radius: 40px;" required />
     </div>
     {{#if messages.error}}
     <div class="alert alert-danger" role="alert">
@@ -31,7 +28,7 @@ padding-top: 50px;
     </div>
     {{/if}}
     <div class="text-center mt-4">
-        <button class="btn btn-black" type="submit">Register</button>
+        <button style="height: auto;" class="btn btn-black" type="submit">Register</button>
     </div>
 
 </form>

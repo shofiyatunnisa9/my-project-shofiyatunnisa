@@ -31,7 +31,6 @@ const chechUser = require("./middleware/auth");
 
 const port = 3100;
 
-// const { log } = require("console");
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./views"));
 
@@ -41,7 +40,6 @@ app.use(express.static("assets"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(express.static("assets")); //agar bisa mengakses assets
 app.use("/uploads", express.static(path.join(__dirname, "./uploads"))); //agar bisa mengakses assets
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -58,7 +56,15 @@ hbs.registerPartials(__dirname + "/views/partials", function (err) {});
 hbs.registerHelper("equal", function (a, b) {
   return a === b;
 });
-
+hbs.registerHelper("split", function (technologies, separator) {
+  if (typeof technologies === "string") {
+    return technologies.split(separator);
+  }
+  return [];
+});
+hbs.registerHelper("includes", function (value, array) {
+  return array && array.includes(value);
+});
 //HALAMAN HOME
 app.get("/", renderHome);
 app.get("/login", renderLogin);

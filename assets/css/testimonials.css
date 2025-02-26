@@ -1,5 +1,5 @@
 .testimonial_star_buttons{
-    display: flex ;
+    display: flex  !important;
     justify-content: center;
 }
 .testimonial_star_buttons button{
@@ -18,7 +18,7 @@
 .testimonial_list{
     width: 90% !important;
     margin : 30px auto;
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }

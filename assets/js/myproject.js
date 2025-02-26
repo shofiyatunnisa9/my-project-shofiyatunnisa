@@ -26,11 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <h3>${project.name} - ${project.startDate}</h3>
               <p>Durasi: ${project.duration}</p>
               <p>${project.description}</p>
-              <div class="tech-icons">
-                  ${project.technologies
-                    .map((tech) => `<img src="/img/${tech}.png" alt="${tech}">`)
-                    .join("")}
-              </div>
+              <p>Teknologi: ${project.technologies.join(",")}</p>
               <button class="btn btn-edit">Edit</button>
               <button class="btn btn-delete" onclick="deleteProject(${index})">Delete</button>
           </div>

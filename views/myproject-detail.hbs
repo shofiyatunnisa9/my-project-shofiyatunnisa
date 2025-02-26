@@ -1,28 +1,19 @@
-{{#> layout currentPage = 'MyProject Detail'}}
-<article class="myproject-create">
-    <img src="/img/pict2.jpg" alt="myProject_img">
-    <h4 class="myProject_item_caption " style="font-weight: bold;">
-        Dumbways Mobile Apps - 2025
-    </h4>
-    <p style="color: gray;">durasi : 3 bulan</p>
-    <p>App that used for dumbways student, it way deployed and can downloaded on playstore or appstore. Happy
-        download</p>
-    <div id="icon_myProject">
-        <img src="/img/playstore.png" alt="">
-        <img src="/img/android.png" alt="">
-        <img src="/img/java.png" alt="">
-    </div>
-    <p></p>
+{{#> layout currentPage = 'Project Detail'}}
 
-    <div class="myProject_buttons">
-        <div class="button_myProject">
-            <button type="submit">Edit</button>
-        </div>
-        <div class="button_myProject">
-            <button type="submit">Delete</button>
-        </div>
-    </div>
+<article class=" card myproject-detail" style="width: 70%;">
+    <img src="{{project.image}}" alt="myProject_img" style="width: 60%; display: block; margin: auto;">
+    <h4>{{project.name}}</h4>
 
+    <p style="color: gray;">Durasi: {{project.duration}}</p>
+    <p>{{project.description}}</p>
+    <p>Teknologi: {{project.technologies}}</p>
+    {{!-- <p>Technologies : {{project.technologies}}</p> --}}
+
+    {{!-- <div id="icon_myProject">
+        {{#each project.technologies}}
+        <img src="{{this}}" alt="img-tech">
+        {{/each}}
+    </div> --}}
 </article>
 
 {{/layout}}

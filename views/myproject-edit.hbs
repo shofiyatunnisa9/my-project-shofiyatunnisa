@@ -1,0 +1,57 @@
+{{#> layout currentPage = 'Edit Project'}}
+
+{{!-- Edit Project --}}
+
+<form class="row g-3 create_project_form" id="project-form" action="/myproject-update/{{project.id}}?_method=PATCH"
+    method="POST">
+    <h2 style="text-align: center;">Edit Project</h2>
+    <div class="col-12 form_field">
+        <label for="name" class="form-label fw-bold">Project Name</label>
+        <input name="name" type="text" class="form-control" id="inputNameProject" value="{{project.name}}" required>
+    </div>
+    <div class="col-md-6 form_field ">
+        <label for="startDate" class="form-label fw-bold">Start date</label>
+        <input name="startDate" type="date" class="form-control" id="startDate" value="startDate" required>
+    </div>
+    <div class="col-md-6 form_field">
+        <label for="endDate" class="form-label fw-bold">End Date</label>
+        <input name="endDate" type="date" class="form-control" id="endDate" value="endDate" required>
+    </div>
+
+    <div class="col-12 form_field">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea name="description" type="text" class="form-control" id="description" rows="6"
+            required>{{project.description}}</textarea>
+    </div>
+
+    <label class="tech option  fw-bold">Technologies</label>
+    <div id="technologies" class="tech-options">
+        <div class="form-check form-check-inline">
+            <input name="technologies" type="checkbox" id="nodejs" value="Node Js" {{#if (includes "Node Js"
+                project.technologies)}}checked{{/if}}>
+            <label for="nodejs">Node Js</label>
+
+            <input name="technologies" type="checkbox" id="reactjs" value="React Js" {{#if (includes "React Js"
+                project.technologies)}}checked{{/if}}>
+            <label for="reactjs">React Js</label>
+
+            <input name="technologies" type="checkbox" id="nextjs" value="Next Js" {{#if (includes "Next Js"
+                project.technologies)}}checked{{/if}}>
+            <label for="nextjs">Next Js</label>
+
+            <input name="technologies" type="checkbox" id="typescript" value="TypeScript" {{#if (includes "TypeScript"
+                project.technologies)}}checked{{/if}}>
+            <label for="typescript">TypeScript</label>
+        </div>
+    </div>
+    <div class="col-12 form_field">
+        <label for="image" class="form-label fw-bold">Upload Image</label>
+        <input name="image" type="file" class="form-control" id="uploadImage" required>
+    </div>
+    <div class="col-12 button_container" id="project-button">
+        <button onclick="hitungDurasi()" type="submit" class="btn btn-black">Submit</button>
+    </div>
+</form>
+
+<script src="/js/myproject.js"></script>
+{{/layout}}
