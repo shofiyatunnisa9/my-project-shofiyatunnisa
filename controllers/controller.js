@@ -3,9 +3,9 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 const config = require("../config/config.js");
 const { Project, User } = require("../models");
-const sequelize = new Sequelize(config.development);
+const sequelize = new Sequelize(config.process.env.NODE_ENV);
 const timeUtils = require("../utils/time");
-
+require("dotenv").config();
 const saltRounds = 10;
 
 async function renderHome(req, res) {
