@@ -1,7 +1,7 @@
 const { Sequelize, QueryTypes, where } = require("sequelize");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-const config = require("../config/config.json");
+const config = require("../config/config.js");
 const { Project, User } = require("../models");
 const sequelize = new Sequelize(config.development);
 const timeUtils = require("../utils/time");

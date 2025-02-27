@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const session = require("express-session");
 const cors = require("cors");
+require("dotenv").config();
 
 const {
   renderHome,
@@ -29,17 +30,18 @@ const {
 const upload = require("./middleware/upload-file");
 const chechUser = require("./middleware/auth");
 
-const port = 3100;
+const port = process.env.SERVER_PORT || 3100;
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./views"));
 
 //modul apa saja yang kita gunakan didalam express
 
-app.use(express.static("assets"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+// app.use(express.static("assets"));
+app.use("/assets", express.static(path.join(__dirname, "./assets"))); //agar bisa mengakses assets
 app.use("/uploads", express.static(path.join(__dirname, "./uploads"))); //agar bisa mengakses assets
 app.use(methodOverride("_method"));
 app.use(flash());
