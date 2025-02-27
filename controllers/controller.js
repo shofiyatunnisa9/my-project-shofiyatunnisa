@@ -162,7 +162,7 @@ async function authLogout(req, res) {
 async function renderProjectCreate(req, res) {
   res.render("myproject-create");
 }
-const projects = []; // Penyimpanan sementara proyek (bisa diganti dengan database)
+const projects = [];
 
 async function createProject(req, res) {
   try {
@@ -173,7 +173,7 @@ async function createProject(req, res) {
     }
 
     const { name, startDate, endDate, description, technologies } = req.body;
-
+    console.log("Data dari form:", req.body);
     if (!name || !startDate || !endDate || !description || !technologies) {
       return res.status(400).json({ message: "All fields are required!" });
     }
@@ -183,16 +183,7 @@ async function createProject(req, res) {
         .status(400)
         .json({ message: "End date must be after start date!" });
     }
-    // let techArray = [];
-    // if (Array.isArray(technologies)) {
-    //   techArray = technologies.filter((t) => t !== "on"); // Hapus nilai "on"
-    // } else if (typeof technologies === "string") {
-    //   techArray = [technologies]; // Jika hanya satu checkbox, ubah ke array
-    // }
-    // const selectedTechnologies = Array.isArray(technologies)
-    //   ? technologies
-    //   : [technologies];
-    // Fungsi menghitung durasi dalam bulan & hari
+
     const calculateDuration = (start, end) => {
       const startDate = new Date(start);
       const endDate = new Date(end);
@@ -219,17 +210,14 @@ async function createProject(req, res) {
 
     const duration = calculateDuration(startDate, endDate);
 
-    // Handle upload file gambar (jika ada)
     const image = req.file
       ? `/uploads/${req.file.filename}`
       : "/uploads/default.png";
-    // const checkedTechnologies = ["nodejs", "reactjs", "nextjs", "typescript"]; // array
-
-    // const technologies = checkedTechnologies.join(",");
 
     let techArray = Array.isArray(technologies)
       ? technologies.filter((t) => t.trim() !== "")
       : [];
+
     await Project.create({
       name,
       startDate,
@@ -423,6 +411,7 @@ async function createProject(req, res) {
 // }
 
 async function renderProjectEdit(req, res) {
+  const project = await Project.findByPk(req.params.id);
   const user = req.session.user;
 
   const id = req.params.id;
@@ -433,40 +422,152 @@ async function renderProjectEdit(req, res) {
     res.render("page-404");
   } else {
     console.log("v2 project detail :", projectYangDipilih);
-    res.render("myproject-edit", { project: projectYangDipilih, user: user });
+    // res.render("myproject-edit", { project: projectYangDipilih, user: user });
+
+    res.render("myproject-edit", {
+      project: {
+        ...project.dataValues,
+        startDate: project.startDate
+          ? project.startDate.toISOString().split("T")[0]
+          : "",
+        endDate: project.endDate
+          ? project.endDate.toISOString().split("T")[0]
+          : "",
+      },
+    });
   }
 }
+// async function updateProject(req, res) {
+//   try {
+//     const projectId = parseInt(req.params.id, 10);
+//     if (isNaN(projectId)) {
+//       return res.status(400).json({ message: "Invalid project ID" });
+//     }
+
+//     const { name, startDate, endDate, description, technologies } = req.body;
+
+//     // Ambil proyek lama
+//     const project = await Project.findByPk(projectId);
+//     if (!project) {
+//       return res.status(404).json({ message: "Project not found" });
+//     }
+
+//     // Cek jika ada file baru diupload, jika tidak pakai gambar lama
+//     let image = project.image;
+//     if (req.file) {
+//       image = `/uploads/${req.file.filename}`;
+//     }
+
+//     await Project.update(
+//       {
+//         name,
+//         startDate,
+//         endDate,
+//         description,
+//         technologies,
+//         image, // Simpan gambar baru atau gunakan yang lama
+//       },
+//       {
+//         where: { id: projectId },
+//       }
+//     );
+
+//     res.redirect("/myproject");
+//   } catch (error) {
+//     console.error("Error updating project:", error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// }
 
 async function updateProject(req, res) {
   const id = req.params.id;
   const { name, startDate, endDate, description, technologies } = req.body;
-  console.log("Judulnya adalah ", name);
-  console.log("Start date ", startDate);
-  console.log("End date ", endDate);
-  console.log("Description ", description);
-  console.log("Technologies ", technologies);
+  console.log("Data dari form:", req.body);
+  if (!name || !startDate || !endDate || !description || !technologies) {
+    return res.status(400).json({ message: "All fields are required!" });
+  }
+
+  if (new Date(endDate) < new Date(startDate)) {
+    return res
+      .status(400)
+      .json({ message: "End date must be after start date!" });
+  }
+  const calculateDuration = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    let months =
+      (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+      (endDate.getMonth() - startDate.getMonth());
+    let days = endDate.getDate() - startDate.getDate();
+
+    if (days < 0) {
+      months -= 1;
+      const lastMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+      days += lastMonth.getDate();
+    }
+
+    if (months > 0 && days > 0) return `${months} months, ${days} days`;
+    if (months > 0) return `${months} months`;
+    return `${days} days`;
+  };
+
+  const duration = calculateDuration(startDate, endDate);
 
   const updateResult = await Project.update(
     {
-      //form edit
       name,
       startDate,
       endDate,
+      duration,
       description,
       technologies,
+
       updatedAt: sequelize.fn("NOW"),
     },
     {
-      //where clause atau filter yang mau di dedit
-      where: {
-        id,
-      },
+      where: { id },
     }
   );
-  console.log("result update :", updateResult);
+
+  console.log("Hasil update:", updateResult);
 
   res.redirect("/myproject");
 }
+
+// async function updateProject(req, res) {
+//   const id = req.params.id;
+//   const { name, startDate, endDate, description, technologies, image } =
+//     req.body;
+
+//   const formattedStartDate = startDate
+//     ? new Date(startDate).toISOString().split("T")[0]
+//     : null;
+//   const formattedEndDate = endDate
+//     ? new Date(endDate).toISOString().split("T")[0]
+//     : null;
+//   const updateResult = await Project.update(
+//     {
+//       //form edit
+//       name,
+//       startDate: formattedStartDate,
+//       endDate: formattedEndDate,
+//       description,
+//       technologies,
+//       image,
+//       updatedAt: sequelize.fn("NOW"),
+//     },
+//     {
+//       //where clause atau filter yang mau di dedit
+//       where: {
+//         id,
+//       },
+//     }
+//   );
+//   console.log("result update :", updateResult);
+
+//   res.redirect("/myproject");
+// }
 async function deleteProject(req, res) {
   const { id } = req.params;
   const deleteResult = await Project.destroy({

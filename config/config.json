@@ -15,11 +15,13 @@
     "port" : "5432",
     "dialect": "postgres"
   },
-  "username": "postgres",
+  "production": {
+    "username": "postgres",
     "password": "2525sho",
     "database": "db_project",
     "host": "127.0.0.1",
     "port" : "5432",
     "dialect": "postgres"
+  }
   
 }

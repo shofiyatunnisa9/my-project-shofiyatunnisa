@@ -11,11 +11,11 @@
     </div>
     <div class="col-md-6 form_field ">
         <label for="startDate" class="form-label fw-bold">Start date</label>
-        <input name="startDate" type="date" class="form-control" id="startDate" value="startDate" required>
+        <input name="startDate" type="date" class="form-control" id="startDate" value="{{project.startDate}}" required>
     </div>
     <div class="col-md-6 form_field">
         <label for="endDate" class="form-label fw-bold">End Date</label>
-        <input name="endDate" type="date" class="form-control" id="endDate" value="endDate" required>
+        <input name="endDate" type="date" class="form-control" id="endDate" value="{{project.endDate}}" required>
     </div>
 
     <div class="col-12 form_field">
@@ -46,7 +46,8 @@
     </div>
     <div class="col-12 form_field">
         <label for="image" class="form-label fw-bold">Upload Image</label>
-        <input name="image" type="file" class="form-control" id="uploadImage" required>
+        <input name="image" type="file" class="form-control" id="uploadImage">
+
     </div>
     <div class="col-12 button_container" id="project-button">
         <button onclick="hitungDurasi()" type="submit" class="btn btn-black">Submit</button>

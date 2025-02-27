@@ -93,6 +93,7 @@ app.post("/myproject-create", chechUser, upload.single("image"), createProject);
 app.get("/myproject-create", chechUser, renderProjectCreate);
 
 //Edit PROJECT
+
 app.get("/myproject-edit/:id", renderProjectEdit);
 
 // SUBMIT/SAVE UPDATE PROJECT
