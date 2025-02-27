@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map(
         (project, index) => `
           <div class="project-card">
-              <img src="${project.image}" alt="${project.name}">
+              <img src="/assets/${project.image}" alt="${project.name}">
               <h3>${project.name} - ${project.startDate}</h3>
               <p>Durasi: ${project.duration}</p>
               <p>${project.description}</p>
